@@ -1,14 +1,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from '../../state/PostProvider';
+import { useDispatch } from 'react-redux';
 import { deletePost } from '../../actions/postActions';
 
-const PostItem = ({ title, body }) => {
+const PostItem = ({ title, body, id }) => {
     const dispatch = useDispatch();
 
     const handleDelete = () => {
-        dispatch(deletePost(title));
+        dispatch(deletePost(id));
     };
 
     return (
