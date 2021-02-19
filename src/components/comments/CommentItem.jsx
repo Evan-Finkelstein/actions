@@ -1,14 +1,13 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from '../../state/PostProvider';
-import { deletePost } from '../../actions/postActions';
+import { useDispatch } from 'react-redux';
+import { deleteComment } from '../../actions/commentActions';
 
-const PostItem = ({ title, body }) => {
+const CommentItem = ({ title, body, id }) => {
     const dispatch = useDispatch();
 
     const handleDelete = () => {
-        dispatch(deletePost(title));
+        dispatch(deleteComment(id));
     };
 
     return (
@@ -22,9 +21,9 @@ const PostItem = ({ title, body }) => {
     );
 };
 
-PostItem.propTypes = {
+CommentItem.propTypes = {
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
 };
 
-export default PostItem;
+export default CommentItem;

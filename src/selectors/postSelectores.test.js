@@ -11,12 +11,5 @@ describe('post selectors', () => {
         expect(posts).toEqual([{ title: 'title', body: 'body' }]);
     });
 
-    it('select the number of posts', () => {
-        const state = {
-            posts: [{ title: 'title', body: 'body' }]
-        };
-
-        expect(countPosts(state)).toEqual(1);
-    });
 });
 
