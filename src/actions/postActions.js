@@ -9,3 +9,8 @@ export const deletePost = (id) => ({
     type: DELETE_POST,
     payload: id
 });
+export const UPDATE_ID = 'UPDATE_ID';
+export const updateId = (id) => ({
+    type: UPDATE_ID,
+    payload: id
+});

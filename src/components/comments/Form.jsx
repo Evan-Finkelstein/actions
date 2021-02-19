@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import { createPost, updateId } from '../../actions/postActions';
+import { createComment, updateId } from '../../actions/commentActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostId } from '../../selectors/postSelectors';
+import { useParams } from 'react-router-dom';
+import { getCommentId } from '../../selectors/commentSelectors'
 
-const PostForm = () => {
+const CommentForm = () => {
+    const commentId = useSelector(getCommentId)
     const dispatch = useDispatch();
-    const postId = useSelector(getPostId)
+    const paramId = useParams()
+    const postId = paramId.id
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
 
     const handleSubmit = event => {
-        const id = postId + 1
         event.preventDefault();
+        const id = commentId + 1
         dispatch(updateId(id));
-        dispatch(createPost({ title, body, id }));
+        dispatch(createComment({ title, body, postId, id }));
     };
 
     return (
@@ -32,9 +35,9 @@ const PostForm = () => {
                 onChange={({ target }) => setBody(target.value)}
             />
 
-            <button>Create Post</button>
+            <button>Create Comment</button>
         </form>
     );
 };
 
-export default PostForm;
+export default CommentForm;

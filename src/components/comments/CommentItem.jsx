@@ -1,31 +1,29 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deletePost } from '../../actions/postActions';
-import { Link } from 'react-router-dom';
+import { deleteComment } from '../../actions/commentActions';
 
-const PostItem = ({ title, body, id }) => {
+const CommentItem = ({ title, body, id }) => {
     const dispatch = useDispatch();
 
     const handleDelete = () => {
-        dispatch(deletePost(id));
+        dispatch(deleteComment(id));
     };
 
     return (
         <>
-            <Link to={`/posts/${id}`}><div>
+            <div>
                 <p>{title}</p>
                 <p>{body}</p>
-            </div></Link>
+            </div>
             <button onClick={handleDelete}>Delete</button>
         </>
     );
 };
 
-PostItem.propTypes = {
+CommentItem.propTypes = {
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
 };
 
-export default PostItem;
+export default CommentItem;
